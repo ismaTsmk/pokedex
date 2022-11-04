@@ -35,8 +35,21 @@ const create = (req, res) => { // Créer un user
 }
 
 
+const deleteFav = (req, res) => { // Créer un user
+
+    console.log('hdsgdyd')
+    const { name,level ,height, image, comment  } =  req.body
+    Favoris.findByIdAndDelete(req.params.id)
+        .then(favori => {
+            res.status(201).json(favori)
+        })
+        .catch(err => res.status(500).json(err))
+}
+
+
 module.exports = { // Exporter les méthodes
     create,
     pokeDetails,
-    index
+    index,
+    deleteFav
 }

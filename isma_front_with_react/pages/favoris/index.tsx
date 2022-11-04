@@ -23,12 +23,26 @@ export default function Home() {
       })
   }
 
+
+
   const removeFav = async (id:any) => {
-    await axios.get("http://localhost:3000")
-      .then((res) => {
-        setFavoris(res.data.pokemon)
-        console.log(res.data.pokemon)
-      })
+    // var data = qs.stringify(id);
+    var config = {
+      method: 'delete',
+      url: 'http://localhost:3000/favoris/'+id,
+      headers: { 
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+    };
+    
+    axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+      fetchFav()
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   useEffect(() => {
@@ -56,14 +70,15 @@ export default function Home() {
             // eslint-disable-next-line react/jsx-key
             <div className='col-4 px-3 my-4  ' key={index}>
               {/* <Link href={`/pokemons/${pokemon.name}`}> */}
-                <div className="card p-5 cursor-pointer"  onClick={()=> {
-                  removeFav(favori.name)
-                }} >
-                    <button className='btn btn-danger position-absolute top-0 right-0 '> remove </button>
-                  <h3>{favori.name}</h3>
+                <div className="card p-5 cursor-pointer" >
+                    <button className='btn btn-danger position-absolute top-0 right-0 ' onClick={()=> {
+                  removeFav(favori._id)
+                }} > remove </button>
+                  <h2>{favori.name}</h2>
                   <div className='d-flex justify-center'>
                         <img src={favori.image} alt="poke img " className='w-100' />
                   </div>
+                  <p>{favori.comment}</p>
                 </div>
 
               {/* </Link> */}

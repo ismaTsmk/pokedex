@@ -16,7 +16,19 @@ export default function Home() {
 
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const [comment, setComment] = useState("");
+
+
+const onChange = (e:any) => {
+  setComment(e.target.value,);
+  };
+
+
+
+  const handleClose = () => {
+    setShow(false);
+    setComment("")
+  }
   const handleShow = async (pokeName:string) => {
     await axios.get("http://localhost:3000/favoris/"+pokeName)
       .then((res) => {
@@ -50,6 +62,7 @@ export default function Home() {
     axios(config)
     .then(function (response) {
       console.log(JSON.stringify(response.data));
+      handleClose()
     })
     .catch(function (error) {
       console.log(error);
@@ -105,6 +118,7 @@ export default function Home() {
             </ul>
           </Modal.Body>
           <Modal.Footer>
+            <input type="text" className='form-control' onChange={e => onChange(e)}  placeholder='votre commentaire' />
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
@@ -115,7 +129,7 @@ export default function Home() {
                 'level': pokeDetails.base_experience,
                 'height': pokeDetails.height ,
                 "image": pokeDetails.sprites.other.dream_world.front_default,
-                "comment": "fuck you "
+                "comment": comment
               })
             }}>
               Add To Favorites
