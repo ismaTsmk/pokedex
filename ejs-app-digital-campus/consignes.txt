@@ -1,0 +1,27 @@
+CORRECTION : 
+https://github.com/sinouJ/ejs-app-digital-campus
+
+
+Développer un Pokédex à l’aide de pokeapi 
+
+API REST à l'aide d'express
+
+Front => Libre choix
+
+3 pages :
+
+- accueil -> Afficher tous les Pokémon /3
+- Pokémon -> affiche les détails d’un Pokémon donné et permet d’ajouter un Pokémon en favori /5 
+- Mes favoris -> lister tous les pokemons en favoris et les supprimer des favoris /5
+
+
+- Ajouter et modifier des informations à un Pokémon (commentaire et possédé ou non par exemple) /2
+
+- ne pas pouvoir ajouter un Pokémon en doublon /2
+
+- Propreté du code /3
+
+
+RENDU :
+Créer un repo github et envoyer le lien par mail à l’adresse suivante :
+sinoujordan.dev@gmail.com
